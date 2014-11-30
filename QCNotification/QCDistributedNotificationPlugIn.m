@@ -1,7 +1,7 @@
-#import "QCNotificationPlugIn.h"
+#import "QCDistributedNotificationPlugIn.h"
 
 
-@interface QCNotificationPlugIn ()
+@interface QCDistributedNotificationPlugIn ()
 
 @property (nonatomic, strong) dispatch_queue_t notificationQueue;
 @property (nonatomic, strong) NSDistributedNotificationCenter *notificationCenter;
@@ -16,7 +16,7 @@
 @end
 
 
-@implementation QCNotificationPlugIn
+@implementation QCDistributedNotificationPlugIn
 
 @dynamic inputNotificationObject;
 @dynamic inputNotificationName;
@@ -29,7 +29,7 @@
 + (NSDictionary *)attributes
 {
 	return @{
-		QCPlugInAttributeNameKey: @"Notification",
+		QCPlugInAttributeNameKey: @"Distributed Notification",
 		QCPlugInAttributeDescriptionKey: @"Observes a system-wide notification",
 		QCPlugInAttributeCopyrightKey: @"© 2014 Maximilian 'McZonk' Christ.",
 		QCPlugInAttributeCategoriesKey: @[

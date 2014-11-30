@@ -24,7 +24,7 @@
 	<string>Copyright © 2014 McZonk. All rights reserved.</string>
 	<key>QCPlugInClasses</key>
 	<array>
-		<string>QCNotificationPlugIn</string>
+		<string>QCDistributedNotificationPlugIn</string>
 	</array>
 </dict>
 </plist>

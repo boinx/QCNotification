@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50F5381F1A2BAF13002942A1 /* QCNotificationPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F5381E1A2BAF13002942A1 /* QCNotificationPlugIn.m */; };
+		50F5381F1A2BAF13002942A1 /* QCDistributedNotificationPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F5381E1A2BAF13002942A1 /* QCDistributedNotificationPlugIn.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		50F538181A2BAF13002942A1 /* QCNotification.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QCNotification.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F5381C1A2BAF13002942A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50F5381D1A2BAF13002942A1 /* QCNotificationPlugIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QCNotificationPlugIn.h; sourceTree = "<group>"; };
-		50F5381E1A2BAF13002942A1 /* QCNotificationPlugIn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QCNotificationPlugIn.m; sourceTree = "<group>"; };
+		50F5381D1A2BAF13002942A1 /* QCDistributedNotificationPlugIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QCDistributedNotificationPlugIn.h; sourceTree = "<group>"; };
+		50F5381E1A2BAF13002942A1 /* QCDistributedNotificationPlugIn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QCDistributedNotificationPlugIn.m; sourceTree = "<group>"; };
 		50F538261A2BB694002942A1 /* BuildNumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = BuildNumber.xcconfig; sourceTree = "<group>"; };
 		50F538271A2BB694002942A1 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		50F5382B1A2BB7E2002942A1 /* UpdateBuildNumber.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = UpdateBuildNumber.sh; sourceTree = "<group>"; };
@@ -53,8 +53,8 @@
 		50F5381A1A2BAF13002942A1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				50F5381D1A2BAF13002942A1 /* QCNotificationPlugIn.h */,
-				50F5381E1A2BAF13002942A1 /* QCNotificationPlugIn.m */,
+				50F5381D1A2BAF13002942A1 /* QCDistributedNotificationPlugIn.h */,
+				50F5381E1A2BAF13002942A1 /* QCDistributedNotificationPlugIn.m */,
 				50F5381C1A2BAF13002942A1 /* Info.plist */,
 			);
 			name = Source;
@@ -145,7 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50F5381F1A2BAF13002942A1 /* QCNotificationPlugIn.m in Sources */,
+				50F5381F1A2BAF13002942A1 /* QCDistributedNotificationPlugIn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
