@@ -1,0 +1,275 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		50F5381F1A2BAF13002942A1 /* QCNotificationPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F5381E1A2BAF13002942A1 /* QCNotificationPlugIn.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		50F538181A2BAF13002942A1 /* QCNotification.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QCNotification.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F5381C1A2BAF13002942A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50F5381D1A2BAF13002942A1 /* QCNotificationPlugIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QCNotificationPlugIn.h; sourceTree = "<group>"; };
+		50F5381E1A2BAF13002942A1 /* QCNotificationPlugIn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QCNotificationPlugIn.m; sourceTree = "<group>"; };
+		50F538261A2BB694002942A1 /* BuildNumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = BuildNumber.xcconfig; sourceTree = "<group>"; };
+		50F538271A2BB694002942A1 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		50F5382B1A2BB7E2002942A1 /* UpdateBuildNumber.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = UpdateBuildNumber.sh; sourceTree = "<group>"; };
+		50F5382D1A2BB84D002942A1 /* InstallPlugIn.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = InstallPlugIn.sh; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50F538141A2BAF13002942A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		50F5380E1A2BAF13002942A1 = {
+			isa = PBXGroup;
+			children = (
+				50F538251A2BB658002942A1 /* Config */,
+				50F5381A1A2BAF13002942A1 /* Source */,
+				50F5382A1A2BB699002942A1 /* Scripts */,
+				50F538191A2BAF13002942A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		50F538191A2BAF13002942A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50F538181A2BAF13002942A1 /* QCNotification.plugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		50F5381A1A2BAF13002942A1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				50F5381D1A2BAF13002942A1 /* QCNotificationPlugIn.h */,
+				50F5381E1A2BAF13002942A1 /* QCNotificationPlugIn.m */,
+				50F5381C1A2BAF13002942A1 /* Info.plist */,
+			);
+			name = Source;
+			path = QCNotification;
+			sourceTree = "<group>";
+		};
+		50F538251A2BB658002942A1 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				50F538261A2BB694002942A1 /* BuildNumber.xcconfig */,
+				50F538271A2BB694002942A1 /* Project.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		50F5382A1A2BB699002942A1 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				50F5382D1A2BB84D002942A1 /* InstallPlugIn.sh */,
+				50F5382B1A2BB7E2002942A1 /* UpdateBuildNumber.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		50F538171A2BAF13002942A1 /* QCNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50F538221A2BAF13002942A1 /* Build configuration list for PBXNativeTarget "QCNotification" */;
+			buildPhases = (
+				50F538131A2BAF13002942A1 /* Sources */,
+				50F538141A2BAF13002942A1 /* Frameworks */,
+				50F538151A2BAF13002942A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QCNotification;
+			productName = QCNotification;
+			productReference = 50F538181A2BAF13002942A1 /* QCNotification.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		50F5380F1A2BAF13002942A1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = McZonk;
+				TargetAttributes = {
+					50F538171A2BAF13002942A1 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 50F538121A2BAF13002942A1 /* Build configuration list for PBXProject "QCNotification" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 50F5380E1A2BAF13002942A1;
+			productRefGroup = 50F538191A2BAF13002942A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				50F538171A2BAF13002942A1 /* QCNotification */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		50F538151A2BAF13002942A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50F538131A2BAF13002942A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50F5381F1A2BAF13002942A1 /* QCNotificationPlugIn.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		50F538201A2BAF13002942A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50F538271A2BB694002942A1 /* Project.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		50F538211A2BAF13002942A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50F538271A2BB694002942A1 /* Project.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		50F538231A2BAF13002942A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = QCNotification/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Graphics/Quartz Composer Plug-Ins";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Debug;
+		};
+		50F538241A2BAF13002942A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = QCNotification/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Graphics/Quartz Composer Plug-Ins";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		50F538121A2BAF13002942A1 /* Build configuration list for PBXProject "QCNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50F538201A2BAF13002942A1 /* Debug */,
+				50F538211A2BAF13002942A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50F538221A2BAF13002942A1 /* Build configuration list for PBXNativeTarget "QCNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50F538231A2BAF13002942A1 /* Debug */,
+				50F538241A2BAF13002942A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 50F5380F1A2BAF13002942A1 /* Project object */;
+}
