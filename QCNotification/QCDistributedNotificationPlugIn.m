@@ -37,7 +37,7 @@
 			@"Source/System"
 		],
 		QCPlugInAttributeExamplesKey: @[
-			
+			@"iTunes.qtz",
 		],
 	};
 }

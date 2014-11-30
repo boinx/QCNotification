@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50F5381F1A2BAF13002942A1 /* QCDistributedNotificationPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F5381E1A2BAF13002942A1 /* QCDistributedNotificationPlugIn.m */; };
+		50F538341A2BCF55002942A1 /* iTunes.qtz in Resources */ = {isa = PBXBuildFile; fileRef = 50F538331A2BCF55002942A1 /* iTunes.qtz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		50F538271A2BB694002942A1 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		50F5382B1A2BB7E2002942A1 /* UpdateBuildNumber.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = UpdateBuildNumber.sh; sourceTree = "<group>"; };
 		50F5382D1A2BB84D002942A1 /* InstallPlugIn.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = InstallPlugIn.sh; sourceTree = "<group>"; };
+		50F538331A2BCF55002942A1 /* iTunes.qtz */ = {isa = PBXFileReference; lastKnownFileType = "video.quartz-composer"; path = iTunes.qtz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 			children = (
 				50F538251A2BB658002942A1 /* Config */,
 				50F5381A1A2BAF13002942A1 /* Source */,
+				50F538321A2BCF34002942A1 /* Samples */,
 				50F5382A1A2BB699002942A1 /* Scripts */,
 				50F538191A2BAF13002942A1 /* Products */,
 			);
@@ -77,6 +80,14 @@
 				50F5382B1A2BB7E2002942A1 /* UpdateBuildNumber.sh */,
 			);
 			path = Scripts;
+			sourceTree = "<group>";
+		};
+		50F538321A2BCF34002942A1 /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				50F538331A2BCF55002942A1 /* iTunes.qtz */,
+			);
+			path = Samples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +146,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F538341A2BCF55002942A1 /* iTunes.qtz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +280,7 @@
 				50F538241A2BAF13002942A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
