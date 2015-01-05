@@ -1,25 +1,29 @@
-#import "QCDistributedNotificationPlugIn.h"
+#import "QCNotificationObserverPlugIn.h"
 
 
-@interface QCDistributedNotificationPlugIn ()
+static const NSUInteger MaxNotificationsCount = 24;
+
+
+@interface QCNotificationObserverPlugIn ()
 
 @property (nonatomic, strong) dispatch_queue_t notificationQueue;
-@property (nonatomic, strong) NSDistributedNotificationCenter *notificationCenter;
 
+@property (nonatomic, strong) NSNotificationCenter *notificationCenter;
 @property (nonatomic, copy) NSString *notificationObject;
 @property (nonatomic, copy) NSString *notificationName;
 
-@property (nonatomic, copy) NSNotification *notification;
+@property (nonatomic, strong) NSMutableArray *notifications;
 
 @property (nonatomic, assign) BOOL signal;
 
 @end
 
 
-@implementation QCDistributedNotificationPlugIn
+@implementation QCNotificationObserverPlugIn
 
 @dynamic inputNotificationObject;
 @dynamic inputNotificationName;
+@dynamic inputDistributedNotification;
 
 @dynamic outputNotificationObject;
 @dynamic outputNotificationName;
@@ -29,9 +33,9 @@
 + (NSDictionary *)attributes
 {
 	return @{
-		QCPlugInAttributeNameKey: @"Distributed Notification",
-		QCPlugInAttributeDescriptionKey: @"Observes a system-wide notification",
-		QCPlugInAttributeCopyrightKey: @"© 2014 Maximilian 'McZonk' Christ.",
+		QCPlugInAttributeNameKey: @"Notification Observer",
+		QCPlugInAttributeDescriptionKey: @"Observes notifications that are send via NSNotificationCenter or NSDistributedNotificationCenter",
+		QCPlugInAttributeCopyrightKey: @"© 2015 Maximilian 'McZonk' Christ.",
 		QCPlugInAttributeCategoriesKey: @[
 			@"Source",
 			@"Source/System"
@@ -54,6 +58,14 @@
 	if([key isEqualToString:@"inputNotificationName"])
 	{
 		return @{ QCPortAttributeNameKey: @"Name" };
+	}
+	
+	if([key isEqualToString:@"inputDistributedNotification"])
+	{
+		return @{
+			QCPortAttributeNameKey: @"Distributed",
+			QCPortAttributeDefaultValueKey: @YES,
+		};
 	}
 	
 	// outputs
@@ -96,11 +108,9 @@
 	self = [super init];
 	if(self != nil)
 	{
-		self.notificationQueue = dispatch_queue_create("QCNotificationPlugIn.noticationQueue", DISPATCH_QUEUE_SERIAL);
-
-		NSDistributedNotificationCenter *notificationCenter = [[NSDistributedNotificationCenter alloc] init];
-		notificationCenter.suspended = YES;
-		self.notificationCenter = notificationCenter;
+		self.notificationQueue = dispatch_queue_create("QCNotificationObserverPlugIn.noticationQueue", DISPATCH_QUEUE_SERIAL);
+		
+		self.notifications = [[NSMutableArray alloc] initWithCapacity:MaxNotificationsCount];
 	}
 	return self;
 }
@@ -108,13 +118,10 @@
 - (void)dealloc
 {
 	dispatch_sync(self.notificationQueue, ^{
-		NSDistributedNotificationCenter *notificationCenter = self.notificationCenter;
+		NSNotificationCenter *notificationCenter = self.notificationCenter;
 		NSString *notificationObject = self.notificationObject;
 		NSString *notificationName = self.notificationName;
-		if(notificationObject != nil || notificationName != nil)
-		{
-			[notificationCenter removeObserver:self name:notificationName object:notificationObject];
-		}
+		[notificationCenter removeObserver:self name:notificationName object:notificationObject];
 	});
 }
 
@@ -125,14 +132,11 @@
 
 - (void)enableExecution:(id<QCPlugInContext>)context
 {
-	dispatch_sync(self.notificationQueue, ^{
-		self.notificationCenter.suspended = NO;
-	});
 }
 
 - (BOOL)execute:(id<QCPlugInContext>)context atTime:(NSTimeInterval)time withArguments:(NSDictionary *)arguments
 {
-	if([self didValueForInputKeyChange:@"inputNotificationObject"] || [self didValueForInputKeyChange:@"inputNotificationName"])
+	if([self didValueForInputKeyChange:@"inputNotificationObject"] || [self didValueForInputKeyChange:@"inputNotificationName"] || [self didValueForInputKeyChange:@"inputDistributedNotification"])
 	{
 		NSString *notificationObject = self.inputNotificationObject;
 		if(notificationObject.length == 0)
@@ -146,31 +150,40 @@
 			notificationName = nil;
 		}
 		
+		BOOL distributedNotification = self.inputDistributedNotification;
+		
 		dispatch_sync(self.notificationQueue, ^{
-			NSDistributedNotificationCenter *notificationCenter = self.notificationCenter;
-
 			// remove old observer
 			{
+				NSNotificationCenter *notificationCenter = self.notificationCenter;
 				NSString *notificationObject = self.notificationObject;
 				NSString *notificationName = self.notificationName;
-				if(notificationObject != nil || notificationName != nil)
-				{
-					[notificationCenter removeObserver:self name:notificationName object:notificationObject];
+				
+				[notificationCenter removeObserver:self name:notificationName object:notificationObject];
 					
-					self.notificationObject = nil;
-					self.notificationName = nil;
-				}
+				self.notificationCenter = nil;
+				self.notificationObject = nil;
+				self.notificationName = nil;
 			}
 			
 			// add new observer
+			if(distributedNotification)
 			{
-				if(notificationObject != 0 || notificationName != 0)
-				{
-					[notificationCenter addObserver:self selector:@selector(handleNotification:) name:notificationName object:notificationObject suspensionBehavior:NSNotificationSuspensionBehaviorCoalesce];
+				NSDistributedNotificationCenter *notificationCenter = [NSDistributedNotificationCenter defaultCenter];
+				[notificationCenter addObserver:self selector:@selector(handleNotification:) name:notificationName object:notificationObject suspensionBehavior:NSNotificationSuspensionBehaviorHold];
+				
+				self.notificationObject = notificationObject;
+				self.notificationName = notificationName;
+				self.notificationCenter = notificationCenter;
+			}
+			else
+			{
+				NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+				[notificationCenter addObserver:self selector:@selector(handleNotification:) name:notificationName object:notificationObject];
 					
-					self.notificationObject = notificationObject;
-					self.notificationName = notificationName;
-				}
+				self.notificationObject = notificationObject;
+				self.notificationName = notificationName;
+				self.notificationCenter = notificationCenter;
 			}
 		});
 	}
@@ -179,16 +192,25 @@
 		__block NSNotification *notification = nil;
 	
 		dispatch_sync(self.notificationQueue, ^{
-			notification = self.notification;
+			NSMutableArray *notifications = self.notifications;
+			notification = notifications.firstObject;
 			if(notification != nil)
 			{
-				self.notification = nil;
+				[notifications removeObjectAtIndex:0];
 			}
 		});
 		
 		if(notification != nil)
 		{
-			self.outputNotificationObject = notification.object;
+			id<NSObject> object = notification.object;
+			if([object isKindOfClass:NSString.class])
+			{
+				self.outputNotificationObject = (NSString *)object;
+			}
+			else
+			{
+				self.outputNotificationObject = NSStringFromClass(object.class);
+			}
 			self.outputNotificationName = notification.name;
 			self.outputNotificationUserInfo = notification.userInfo;
 
@@ -208,7 +230,16 @@
 - (void)disableExecution:(id<QCPlugInContext>)context
 {
 	dispatch_sync(self.notificationQueue, ^{
-		self.notificationCenter.suspended = YES;
+		// remove old observer
+		NSNotificationCenter *notificationCenter = self.notificationCenter;
+		NSString *notificationObject = self.notificationObject;
+		NSString *notificationName = self.notificationName;
+
+		[notificationCenter removeObserver:self name:notificationName object:notificationObject];
+				
+		self.notificationCenter = nil;
+		self.notificationObject = nil;
+		self.notificationName = nil;
 	});
 }
 
@@ -218,7 +249,7 @@
 
 - (void)handleNotification:(NSNotification *)notification
 {
-	dispatch_sync(self.notificationQueue, ^{
+	dispatch_async(self.notificationQueue, ^{
 		// there are notifications that mismatched e.g. object:nil name:com.apple.HIToolbox.frontMenuBarShown
 	
 		NSString *notificationObject = self.notificationObject;
@@ -233,7 +264,13 @@
 			return;
 		}
 	
-		self.notification = notification;
+		NSMutableArray *notifications = self.notifications;
+		if(notifications.count > MaxNotificationsCount)
+		{
+			[notifications removeObjectsInRange:NSMakeRange(0, notifications.count - MaxNotificationsCount)];
+			// TODO: log?
+		}
+		[notifications addObject:notification];
 	});
 }
 

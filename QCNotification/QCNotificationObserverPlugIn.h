@@ -1,10 +1,11 @@
 #import <Quartz/Quartz.h>
 
 
-@interface QCDistributedNotificationPlugIn : QCPlugIn
+@interface QCNotificationObserverPlugIn : QCPlugIn
 
 @property (assign) NSString *inputNotificationObject;
 @property (assign) NSString *inputNotificationName;
+@property (assign) BOOL inputDistributedNotification;
 
 @property (assign) NSString *outputNotificationObject;
 @property (assign) NSString *outputNotificationName;
