@@ -64,7 +64,7 @@ static const NSUInteger MaxNotificationsCount = 24;
 	{
 		return @{
 			QCPortAttributeNameKey: @"Distributed",
-			QCPortAttributeDefaultValueKey: @YES,
+			QCPortAttributeDefaultValueKey: @NO,
 		};
 	}
 	
@@ -171,20 +171,17 @@ static const NSUInteger MaxNotificationsCount = 24;
 			{
 				NSDistributedNotificationCenter *notificationCenter = [NSDistributedNotificationCenter defaultCenter];
 				[notificationCenter addObserver:self selector:@selector(handleNotification:) name:notificationName object:notificationObject suspensionBehavior:NSNotificationSuspensionBehaviorHold];
-				
-				self.notificationObject = notificationObject;
-				self.notificationName = notificationName;
 				self.notificationCenter = notificationCenter;
 			}
 			else
 			{
 				NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 				[notificationCenter addObserver:self selector:@selector(handleNotification:) name:notificationName object:notificationObject];
-					
-				self.notificationObject = notificationObject;
-				self.notificationName = notificationName;
 				self.notificationCenter = notificationCenter;
 			}
+
+			self.notificationObject = notificationObject;
+			self.notificationName = notificationName;
 		});
 	}
 	

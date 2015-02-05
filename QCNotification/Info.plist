@@ -25,6 +25,7 @@
 	<key>QCPlugInClasses</key>
 	<array>
 		<string>QCNotificationObserverPlugIn</string>
+		<string>QCNotificationSenderPlugIn</string>
 	</array>
 </dict>
 </plist>

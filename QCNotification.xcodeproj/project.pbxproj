@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		503E2C421A83690800E81D6B /* QCNotificationSenderPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 503E2C411A83690800E81D6B /* QCNotificationSenderPlugIn.m */; };
 		50F5381F1A2BAF13002942A1 /* QCNotificationObserverPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F5381E1A2BAF13002942A1 /* QCNotificationObserverPlugIn.m */; };
 		50F538341A2BCF55002942A1 /* iTunes.qtz in Resources */ = {isa = PBXBuildFile; fileRef = 50F538331A2BCF55002942A1 /* iTunes.qtz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		503E2C401A83690800E81D6B /* QCNotificationSenderPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCNotificationSenderPlugIn.h; sourceTree = "<group>"; };
+		503E2C411A83690800E81D6B /* QCNotificationSenderPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCNotificationSenderPlugIn.m; sourceTree = "<group>"; };
 		503E2C431A83733000E81D6B /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		50F538181A2BAF13002942A1 /* QCNotification.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QCNotification.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F5381C1A2BAF13002942A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +62,8 @@
 			children = (
 				50F5381D1A2BAF13002942A1 /* QCNotificationObserverPlugIn.h */,
 				50F5381E1A2BAF13002942A1 /* QCNotificationObserverPlugIn.m */,
+				503E2C401A83690800E81D6B /* QCNotificationSenderPlugIn.h */,
+				503E2C411A83690800E81D6B /* QCNotificationSenderPlugIn.m */,
 				50F5381C1A2BAF13002942A1 /* Info.plist */,
 			);
 			name = Source;
@@ -159,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				503E2C421A83690800E81D6B /* QCNotificationSenderPlugIn.m in Sources */,
 				50F5381F1A2BAF13002942A1 /* QCNotificationObserverPlugIn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
