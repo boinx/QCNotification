@@ -24,6 +24,7 @@ static const NSUInteger MaxNotificationsCount = 24;
 @dynamic inputNotificationObject;
 @dynamic inputNotificationName;
 @dynamic inputDistributedNotification;
+@dynamic inputQueued;
 
 @dynamic outputNotificationObject;
 @dynamic outputNotificationName;
@@ -64,6 +65,14 @@ static const NSUInteger MaxNotificationsCount = 24;
 	{
 		return @{
 			QCPortAttributeNameKey: @"Distributed",
+			QCPortAttributeDefaultValueKey: @NO,
+		};
+	}
+	
+	if([key isEqualToString:@"inputQueued"])
+	{
+		return @{
+			QCPortAttributeNameKey: @"Queued",
 			QCPortAttributeDefaultValueKey: @NO,
 		};
 	}
@@ -186,14 +195,26 @@ static const NSUInteger MaxNotificationsCount = 24;
 	}
 	
 	{
+		BOOL queued = self.inputQueued;
+
 		__block NSNotification *notification = nil;
-	
 		dispatch_sync(self.notificationQueue, ^{
 			NSMutableArray *notifications = self.notifications;
-			notification = notifications.firstObject;
-			if(notification != nil)
+			if(queued)
 			{
-				[notifications removeObjectAtIndex:0];
+				notification = notifications.firstObject;
+				if(notification != nil)
+				{
+					[notifications removeObjectAtIndex:0];
+				}
+			}
+			else
+			{
+				notification = notifications.lastObject;
+				if(notification != nil)
+				{
+					[notifications removeAllObjects];
+				}
 			}
 		});
 		
