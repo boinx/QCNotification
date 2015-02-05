@@ -12,6 +12,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		503E2C431A83733000E81D6B /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		50F538181A2BAF13002942A1 /* QCNotification.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QCNotification.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F5381C1A2BAF13002942A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50F5381D1A2BAF13002942A1 /* QCNotificationObserverPlugIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QCNotificationObserverPlugIn.h; sourceTree = "<group>"; };
@@ -38,9 +39,9 @@
 			isa = PBXGroup;
 			children = (
 				50F538251A2BB658002942A1 /* Config */,
+				50F5382A1A2BB699002942A1 /* Scripts */,
 				50F5381A1A2BAF13002942A1 /* Source */,
 				50F538321A2BCF34002942A1 /* Samples */,
-				50F5382A1A2BB699002942A1 /* Scripts */,
 				50F538191A2BAF13002942A1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +79,7 @@
 			children = (
 				50F5382D1A2BB84D002942A1 /* InstallPlugIn.sh */,
 				50F5382B1A2BB7E2002942A1 /* UpdateBuildNumber.sh */,
+				503E2C431A83733000E81D6B /* .travis.yml */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
